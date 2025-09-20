@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ===== ENCABEZADO DE LA PÁGINA ===== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Distribución de Mesas</title>
+    
+    <!-- Enlaces a librerías externas -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <!-- Mi archivo de estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- ===== CUERPO DE LA PÁGINA ===== -->
+<body class="bg-light">
+
+    <!-- ===== SECCIÓN SUPERIOR (TÍTULO Y BÚSQUEDA) ===== -->
+    <header class="container py-5 text-center">
+        <h1 class="display-4 titulo-evento">Bienvenidos al cumpleaños de Jorge esteban patiño</h1>
+        <p class="lead">Verifica tu mesa ingresando tu nombre</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-4">
+                <input type="text" 
+                       id="searchInput" 
+                       class="form-control form-control-lg" 
+                       placeholder="Por favor busca tu nombre aquí...">
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTENIDO PRINCIPAL (LAS MESAS) ===== -->
+    <main class="container py-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="mesasContainer">
+            
+            <!-- MESA NÚMERO 1 -->
+            <div class="col mesa-card" 
+                 data-guests="maria guadalupe herrera juan pablo herrera angela andrea suarez maria emperatriz arango teresa de jesus diaz juan diego herrera adiela suarez arango gloria franco arango">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mesa-titulo">Mesa 1</h5>
+                        <ul class="list-unstyled invitados-list">
+                            <li>Maria Guadalupe Herrera</li>
+                            <li>Juan Pablo Herrera</li>
+                            <li>Angela Andrea Suarez</li>
+                            <li>Maria Emperatriz Arango</li>
+                            <li>Teresa de Jesús Diaz</li>
+                            <li>Adiela Suarez Arango</li>
+                            <li>Gloria Franco Arango</li>
+                            <li>Juan Diego Herrera</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MESA NÚMERO 2 -->
+            <div class="col mesa-card" 
+                 data-guests="jhon fredy orozco valencia yuly tatiana orozco julio orozco martha valencia arango isabel orozco valencia piedad lucia romero valencia">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mesa-titulo">Mesa 2</h5>
+                        <ul class="list-unstyled invitados-list">
+                            <li>Jhon Fredy Orozco</li>
+                            <li>Yuly Tatiana Orozco</li>
+                            <li>Julio Orozco</li>
+                            <li>Martha Valencia Arango</li>
+                            <li>Isabel Orozco Valencia</li>
+                            <li>Piedad Lucia Romero Valencia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <!-- MESA NÚMERO 4 -->
+            <div class="col mesa-card" 
+                 data-guests="maria guadalupe herrera juan pablo herrera angela andrea suarez maria emperatriz arango teresa de jesus diaz juan diego herrera adiela suarez arango gloria franco arango">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mesa-titulo">Mesa 3</h5>
+                        <ul class="list-unstyled invitados-list">
+                            <li>anyi paola</li>
+                            <li>Juan Pablo padilla</li>
+                            <li>julio andres</li>
+                            <li>dayana correa</li>
+                            <li>valeria narvaez</li>
+                            <li>juan jose lopez</li>
+                            <li>Juan andres lopez</li>
+                            <li>Samuel heli</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <!-- MESA NÚMERO 4 -->
+            <div class="col mesa-card" 
+                 data-guests="maria guadalupe herrera juan pablo herrera angela andrea suarez maria emperatriz arango teresa de jesus diaz juan diego herrera adiela suarez arango gloria franco arango">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mesa-titulo">Mesa 4</h5>
+                        <ul class="list-unstyled invitados-list">
+                            <li>Alejandro Rojas</li>
+                            <li>Sofía Vargasa</li>
+                            <li>Santiago Gómez</li>
+                            <li>Isabella Medina</li>
+                            <li>Juan Pablo Martínez</li>
+                            <li>Valeria Sánchez</li>
+                            <li>Miguel Ángel Pérez</li>
+                            <li>Gabriela López</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer class="container text-center py-4">
+        <p class="text-muted small">© JorgeWebIngenieria | 2025. All Rights Reserved EstebanWebIngenieria.</p>
+    </footer>
+
+    <!-- ===== CÓDIGO JAVASCRIPT PARA LA BÚSQUEDA ===== -->
+    <script>
+        // 1. OBTENER ELEMENTOS DEL HTML
+        const searchInput = document.getElementById('searchInput');
+        const mesas = document.querySelectorAll('.mesa-card');
+
+        // 2. PREPARAR CADA MESA PARA LA BÚSQUEDA
+        // (Guardar el texto original de cada nombre)
+        mesas.forEach(mesa => {
+            const nombres = mesa.querySelectorAll('li');
+            nombres.forEach(nombre => {
+                if (!nombre.hasAttribute('data-original-text')) {
+                    nombre.setAttribute('data-original-text', nombre.textContent.trim());
+                }
+            });
+        });
+
+        // 3. ESCUCHAR CUANDO EL USUARIO ESCRIBE EN LA BÚSQUEDA
+        searchInput.addEventListener('input', () => {
+            const busqueda = searchInput.value.toLowerCase().trim();
+
+            // 4. REVISAR CADA MESA
+            mesas.forEach(mesa => {
+                const todosLosInvitados = mesa.getAttribute('data-guests');
+                const nombres = mesa.querySelectorAll('li');
+
+                // 5. MOSTRAR U OCULTAR LA MESA
+                if (todosLosInvitados.includes(busqueda) || busqueda === '') {
+                    mesa.style.display = '';  // Mostrar mesa
+                } else {
+                    mesa.style.display = 'none';  // Ocultar mesa
+                }
+
+                // 6. RESALTAR COINCIDENCIAS EN CADA NOMBRE
+                nombres.forEach(nombre => {
+                    const textoOriginal = nombre.getAttribute('data-original-text');
+                    
+                    // Restaurar texto original
+                    nombre.textContent = textoOriginal;
+
+                    // Si hay coincidencia, resaltarla
+                    if (busqueda !== '' && textoOriginal.toLowerCase().includes(busqueda)) {
+                        const regex = new RegExp((${busqueda}), 'gi');
+                        const textoResaltado = textoOriginal.replace(regex, '<span class="highlight">$1</span>');
+                        nombre.innerHTML = textoResaltado;
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
